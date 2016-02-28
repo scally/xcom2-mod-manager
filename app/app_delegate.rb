@@ -9,30 +9,21 @@ class AppDelegate
     @status_item.setMenu create_mods_menu
   end
 
+  def version
+    'CFBundleShortVersionString'.info_plist
+  end
+
   def create_mods_menu
     NSMenu.new.tap do |menu|
       menu.initWithTitle ''
 
       @library.all.each do |mod|
-        menu.addItem(NSMenuItem.new.tap do |item|
-          item.title = mod.name
-          item.action = 'clicked_menu_bar:'
-          item.setState(NSOnState) if mod.enabled
-        end)
+        menu.addItem NSMenuItem.create(title: mod.name, action: 'clicked_menu_bar:', enabled: mod.enabled)
       end
 
-      menu.addItem(NSMenuItem.new.tap do |item|
-        item.title = '---'
-      end)
-
-      menu.addItem(NSMenuItem.new.tap do |item|
-        item.title = "version #{"CFBundleShortVersionString".info_plist}"
-      end)
-
-      menu.addItem(NSMenuItem.new.tap do |item|
-        item.title = 'Quit xc2mod manager'
-        item.action = 'terminate:'
-      end)
+      menu.addItem NSMenuItem.separatorItem
+      menu.addItem NSMenuItem.create title: "version #{version}"
+      menu.addItem NSMenuItem.create title: 'Quit xc2mod manager', action: 'terminate:'
     end
   end
 
