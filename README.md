@@ -1,13 +1,13 @@
 XCom2 Mod Manager for OSX
 ----
 
-![Screenshot](/docs/demo1.png "Screenshot")
+![Screenshot](/docs/screenshot.png "Screenshot")
 
 If you have XCom2 for OSX, you might have noticed that mods don't work well, or often at all, and the builtin mod manager takes forever to boot and crashes a lot.
 
 This is an attempt to simplify enabling/disabling mods. Simply start this mod manager and check/uncheck mods to immediately enable/disable them in your mod config.
 
-Assumes you are using Steam Workshop to manage your mod subscriptions/downloads; this only enables/disables them locally. 
+Assumes you are using Steam Workshop to manage your mod subscriptions/downloads; this only enables/disables them locally.
 
 This has been tested on my machine only; source is included.
 
