@@ -21,11 +21,18 @@ class ModLibrary
   end
 
   def write_mods
-    NSFileManager.defaultManager.setAttributes({'NSFileImmutable' => 0}, ofItemAtPath: mod_ini_path, error: nil)
+    unlock_mod_file
     @installed_mods.sort!
-    data = @ini.og_iniFileData
-    data.write_to mod_ini_path
+    @ini.og_iniFileData.write_to mod_ini_path
+    lock_mod_file
+  end
+
+  def lock_mod_file
     NSFileManager.defaultManager.setAttributes({'NSFileImmutable' => 1}, ofItemAtPath: mod_ini_path, error: nil)
+  end
+
+  def unlock_mod_file
+    NSFileManager.defaultManager.setAttributes({'NSFileImmutable' => 0}, ofItemAtPath: mod_ini_path, error: nil)
   end
 
   def installed_mods
