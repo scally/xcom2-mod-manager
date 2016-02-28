@@ -1,4 +1,4 @@
-module NSMenuItemPatch
+module NSMenuItemExtends
   def create params={}
     new.tap do |item|
       item.title = params[:title] if params[:title]
@@ -8,6 +8,17 @@ module NSMenuItemPatch
   end
 end
 
+module NSMenuItemIncludes
+  def checked?
+    state == 1
+  end
+
+  def toggle!
+    self.state = checked? ? 0 : 1
+  end
+end
+
 NSMenuItem.class_eval do
-  extend NSMenuItemPatch
+  extend NSMenuItemExtends
+  include NSMenuItemIncludes
 end

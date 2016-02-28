@@ -9,10 +9,6 @@ class AppDelegate
     @status_item.setMenu create_mods_menu
   end
 
-  def version
-    'CFBundleShortVersionString'.info_plist
-  end
-
   def create_mods_menu
     NSMenu.new.tap do |menu|
       menu.initWithTitle ''
@@ -27,12 +23,14 @@ class AppDelegate
     end
   end
 
+  def version
+    'CFBundleShortVersionString'.info_plist
+  end
+
   def clicked_menu_bar item
-    item.state = item.state == 1 ? 0 : 1
-    if item.state == 1
-      @library.enable item.title
-    else
-      @library.disable item.title
-    end
+    item.toggle!
+
+    action = item.checked? ? :enable : :disable
+    @library.send action, item.title
   end
 end
