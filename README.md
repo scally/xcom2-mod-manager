@@ -7,12 +7,14 @@ If you have XCom2 for OSX, you might have noticed that mods don't work well, or 
 
 This is an attempt to simplify enabling/disabling mods. Simply start this mod manager and check/uncheck mods to immediately enable/disable them in your mod config.
 
-This has been tested on my machine only; source is included. Requires rubymotion to build for yourself.
+This has been tested on my machine only; source is included.
 
-Caveats
+Releases
 ---
 
-It seems that there's been some kind of hotfix that re-enables all installed mods each time you boot the game. I've worked around it for now by setting the file to readonly after we write the list of enabled mods. 
+Requires [RubyMotion](http://www.rubymotion.com/download/) to build for yourself.
+
+[The latest release can be found here](https://github.com/scally/xcom2-mod-manager/releases).
 
 Prerequisites
 ---
@@ -23,3 +25,8 @@ Setup a symlink to connect your Steam mods directory to where XCom2 expects them
 cd ~/Library/"Application Support"/Steam/steamapps/common/"XCOM 2"/XCOM2Data/xcomgame
 ln -s ../../../../workshop/content/268500/ mods
 ```
+
+Caveats
+---
+
+It seems that there's been some kind of hotfix that re-enables all installed mods each time you boot the game. I've worked around it for now by setting the file to readonly after we write the list of enabled mods.
