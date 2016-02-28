@@ -16,16 +16,6 @@ Requires [RubyMotion](http://www.rubymotion.com/download/) to build for yourself
 
 [The latest release can be found here](https://github.com/scally/xcom2-mod-manager/releases).
 
-Prerequisites
----
-
-Setup a symlink to connect your Steam mods directory to where XCom2 expects them to load from:
-
-```
-cd ~/Library/"Application Support"/Steam/steamapps/common/"XCOM 2"/XCOM2Data/xcomgame
-ln -s ../../../../workshop/content/268500/ mods
-```
-
 Caveats
 ---
 
