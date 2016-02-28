@@ -40,6 +40,6 @@ class ModLibrary
   end
 
   def mod_ini_path
-    '~/Library/Application Support/Feral Interactive/XCOM 2/VFS/Local/my games/XCOM2/XComGame/Config/XComModOptions.ini'.stringByExpandingTildeInPath
+    File.expand_path '~/Library/Application Support/Feral Interactive/XCOM 2/VFS/Local/my games/XCOM2/XComGame/Config/XComModOptions.ini'
   end
 end
