@@ -13,6 +13,8 @@ Motion::Project::App.setup do |app|
   app.name = 'xcom2-mod-manager'
   app.info_plist['NSUIElement'] = 1
 
+  app.short_version = app_version = '0.2'
+
   app.pods do
    pod 'OGIniFiler', git: 'https://github.com/scally/OGIniFiler.git'
  end

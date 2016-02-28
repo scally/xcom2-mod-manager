@@ -26,6 +26,10 @@ class AppDelegate
       end)
 
       menu.addItem(NSMenuItem.new.tap do |item|
+        item.title = "version #{"CFBundleShortVersionString".info_plist}"
+      end)
+
+      menu.addItem(NSMenuItem.new.tap do |item|
         item.title = 'Quit xc2mod manager'
         item.action = 'terminate:'
       end)
