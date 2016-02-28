@@ -28,9 +28,7 @@ class AppDelegate
   end
 
   def clicked_menu_bar item
-    item.toggle!
-
-    action = item.checked? ? :enable : :disable
-    @library.send action, item.title
+    item.toggle
+    @library.toggle item.title
   end
 end

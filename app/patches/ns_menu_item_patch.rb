@@ -13,7 +13,7 @@ module NSMenuItemIncludes
     state == 1
   end
 
-  def toggle!
+  def toggle
     self.state = checked? ? 0 : 1
   end
 end
