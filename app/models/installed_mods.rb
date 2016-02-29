@@ -1,7 +1,7 @@
 class InstalledMods
   def initialize
-    @ini = NSDictionary.og_dictionaryWithContentsOfIniFile mod_ini_path
-    @installed_mods = @ini['Engine.XComModOptions']['ActiveMods'] || []
+    @ini = NSDictionary.og_dictionaryWithContentsOfIniFile(mod_ini_path) || {}
+    @installed_mods = (@ini['Engine.XComModOptions'] || {})['ActiveMods'] || []
   end
 
   def all
