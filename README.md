@@ -18,8 +18,6 @@ Requires [RubyMotion](http://www.rubymotion.com/download/) to build for yourself
 
 [The latest release can be found here](https://github.com/scally/xcom2-mod-manager/releases).
 
-You may have to delete the old version before reinstalling a new version; the installer seems hesistant to install over itself for reasons I have yet to understand.
-
 Caveats
 ---
 
