@@ -13,13 +13,29 @@ class AppDelegate
     NSMenu.new.tap do |menu|
       menu.initWithTitle ''
 
+      menu.addItem NSMenuItem.title_version
+      menu.addItem NSMenuItem.create title: 'Enable All', action: 'enable_all:'
+      menu.addItem NSMenuItem.create title: 'Disable All', action: 'disable_all:'
+      menu.addItem NSMenuItem.quit
+      menu.addItem NSMenuItem.separatorItem
+
       @library.all.each do |mod|
         menu.addItem NSMenuItem.create(title: mod.name, action: 'clicked_menu_bar:', enabled: mod.enabled)
       end
+    end
+  end
 
-      menu.addItem NSMenuItem.separatorItem
-      menu.addItem NSMenuItem.create title: "version #{version}"
-      menu.addItem NSMenuItem.create title: 'Quit xc2mod manager', action: 'terminate:'
+  def enable_all item
+    @library.enable_all
+    @library.all.each do |mod|
+      @status_item.menu.itemWithTitle(mod.name).state = 1
+    end
+  end
+
+  def disable_all item
+    @library.disable_all
+    @library.all.each do |mod|
+      @status_item.menu.itemWithTitle(mod.name).state = 0
     end
   end
 

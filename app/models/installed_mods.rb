@@ -1,7 +1,7 @@
 class InstalledMods
   def initialize
-    @ini = NSDictionary.og_dictionaryWithContentsOfIniFile(mod_ini_path) || {}
-    @installed_mods = (@ini['Engine.XComModOptions'] || {})['ActiveMods'] || []
+    @ini = Ini.new
+    @installed_mods = @ini.all
   end
 
   def all
@@ -21,22 +21,18 @@ class InstalledMods
     save
   end
 
+  def enable_all mods
+    @installed_mods += mods
+    @installed_mods.uniq!
+    save
+  end
+
+  def disable_all
+    @installed_mods.clear
+    save
+  end
+
   def save
-    unlock_mod_file
-    @installed_mods.sort!
-    @ini.og_iniFileData.write_to mod_ini_path
-    lock_mod_file
-  end
-
-  def lock_mod_file
-    NSFileManager.defaultManager.setAttributes({'NSFileImmutable' => 1}, ofItemAtPath: mod_ini_path, error: nil)
-  end
-
-  def unlock_mod_file
-    NSFileManager.defaultManager.setAttributes({'NSFileImmutable' => 0}, ofItemAtPath: mod_ini_path, error: nil)
-  end
-
-  def mod_ini_path
-    File.expand_path '~/Library/Application Support/Feral Interactive/XCOM 2/VFS/Local/my games/XCOM2/XComGame/Config/XComModOptions.ini'
+    @ini.save @installed_mods
   end
 end

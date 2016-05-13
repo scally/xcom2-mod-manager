@@ -6,6 +6,14 @@ module NSMenuItemExtends
       item.setState NSOnState if params[:enabled]
     end
   end
+
+  def title_version
+    create title: "#{'CFBundleDisplayName'.info_plist} #{'CFBundleShortVersionString'.info_plist}"
+  end
+
+  def quit
+    create title: 'Quit', action: 'terminate:'
+  end
 end
 
 module NSMenuItemIncludes
